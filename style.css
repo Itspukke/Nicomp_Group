@@ -703,3 +703,82 @@ footer{background:#060f1a;padding:2.5rem 5%}
   /* ── FORM ── */
   .form-row{grid-template-columns:1fr}
 }
+
+/* SERVICES PANEL FIX */
+.svc-panels{
+  position: relative;
+  width: 100%;
+  min-height: 950px; /* keeps all tabs aligned */
+}
+
+/* PANEL */
+.svc-panel{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition:
+    opacity .45s ease,
+    transform .45s ease,
+    visibility .45s;
+}
+
+/* ACTIVE PANEL */
+.svc-panel.active{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  position: relative;
+}
+
+/* INNER LAYOUT */
+.svc-panel-inner{
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* DESKTOP ALIGNMENT FIX */
+.svc-panel-left,
+.svc-panel-right{
+  height: 100%;
+}
+
+/* GRID FIX */
+.svc-items-grid{
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 22px;
+  align-content: start;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px){
+
+  .svc-panels{
+    min-height: auto;
+  }
+
+  .svc-panel{
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .svc-panel.active{
+    display: block;
+  }
+
+  .svc-panel-inner{
+    grid-template-columns: 1fr;
+  }
+
+  .svc-items-grid{
+    grid-template-columns: 1fr;
+  }
+}
